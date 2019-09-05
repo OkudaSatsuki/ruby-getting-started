@@ -32,7 +32,7 @@ class LinebotController < ApplicationController
                 #helpを表示させる
                 case str
                 when "help"
-                   message = {
+                   message1 = {
                        type: "text",
                        text: "ヘルプを表示します"
                    }
@@ -40,21 +40,26 @@ class LinebotController < ApplicationController
                 else
                     @data.each do |code|
                         if code.name == str #入力されたコードネームと一致したら
-                            message = {
-                            type: "text",
-                            text: "#{code.first} #{code.third} #{code.fifth}"
-                        }
+                            message1 = {
+                                type: "text",
+                                text: "#{code.first} #{code.third} #{code.fifth}"
+                            }
+                            message2 = {
+                                type: "image"
+                                contentProvider.originalContentUrl: "https://gakufu.gakki.me/img/codep/C/C_V1.jpg"
+                            }
                         break
                         
                         else                #DB上になかったら
-                            message = {
+                            message1 = {
                             type: "text",
                             text: "Not found"
                         }
                         end
                     end
                 end
-                client.reply_message(event["replyToken"], message)
+                client.reply_message(event["replyToken"], message1)
+                client.reply_message(event["replyToken"], message2)
            when Line::Bot::Event::MessageType::Location
                message = {
                    type: "location",
