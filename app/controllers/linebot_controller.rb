@@ -45,8 +45,9 @@ class LinebotController < ApplicationController
                                 text: "#{code.first} #{code.third} #{code.fifth}"
                             }
                             message2 = {
-                                type: "image"
-                                contentProvider.originalContentUrl: "https://gakufu.gakki.me/img/codep/C/C_V1.jpg"
+                                type: "image",
+                                originalContentUrl: "https://gakufu.gakki.me/img/codep/C/C_V1.jpg",
+                                previewImageUrl: "https://gakufu.gakki.me/img/codep/C/C_V1.jpg"
                             }
                         break
                         
