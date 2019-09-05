@@ -31,12 +31,12 @@ class LinebotController < ApplicationController
                    text: "ありがとう！" #event.message["text"] + "!"
                 }
                 client.reply_message(event["replyToken"], message)
-           when Line::Bot::Event::MessageType::Image
-               message = {
-                   type:"image"
-                   text: "いいね！"
-               }
-               client.reply_message(event["replyToken"], message)
+           #when Line::Bot::Event::MessageType::Image
+            #   message = {
+             #      type:"image"
+              #     text: "いいね！"
+               #}
+               #client.reply_message(event["replyToken"], message)
            when Line::Bot::Event::MessageType::Location
                message = {
                    type: "location",
