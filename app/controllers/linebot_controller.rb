@@ -41,12 +41,12 @@ class LinebotController < ApplicationController
                @data.each do |code|
                     if code.name == str #入力されたコードネームと一致したら
                         message = {
-                           type: "text"
+                           type: "text",
                            text: "#{first} #{third} #{fifth}"
                        }
                     else                #DB上になかったら
                         message = {
-                           type: "text"
+                           type: "text",
                            text: "Not found"
                        }
                     end
