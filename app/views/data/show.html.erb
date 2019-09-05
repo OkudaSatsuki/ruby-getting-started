@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @datum.name %>
+</p>
+
+<p>
+  <strong>First:</strong>
+  <%= @datum.first %>
+</p>
+
+<p>
+  <strong>Third:</strong>
+  <%= @datum.third %>
+</p>
+
+<p>
+  <strong>Fifth:</strong>
+  <%= @datum.fifth %>
+</p>
+
+<%= link_to 'Edit', edit_datum_path(@datum) %> |
+<%= link_to 'Back', data_path %>
