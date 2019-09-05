@@ -26,10 +26,18 @@ class LinebotController < ApplicationController
          when Line::Bot::Event::Message
            case event.type
            when Line::Bot::Event::MessageType::Text
-               message = {
-                   type: "text",
-                   text: "ありがとう！" #event.message["text"] + "!"
-                }
+               if ("help" == event.message["text"])
+                   message =
+                   {
+                       type: "text"
+                       text: "ヘルプを表示します"
+                   }
+                else   
+                    message = {
+                        type: "text",
+                        text: "ありがとう！" #event.message["text"] + "!"
+                    }
+                    
                 client.reply_message(event["replyToken"], message)
            when Line::Bot::Event::MessageType::Location
                message = {
