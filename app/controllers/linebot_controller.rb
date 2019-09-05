@@ -42,9 +42,9 @@ class LinebotController < ApplicationController
                         if code.name == str #入力されたコードネームと一致したら
                             message = {
                                 [type: "text",text: "#{code.first} #{code.third} #{code.fifth}"],
-                                [type: "image",originalContentUrl: "https://gakufu.gakki.me/img/codep/C/C_V1.jpg",previewImageUrl: "https://gakufu.gakki.me/img/codep/C/C_V1.jpg"]
+                                [type: "image",originalContentUrl: "https://gakufu.gakki.me/img/codep/C/C_V1.jpg",previewImageUrl: "https://gakufu.gakki.me/img/codep/C/C_V1.jpg"],
                             }
-                            break
+                        break
                         
                         else                #DB上になかったら
                             message = {
@@ -54,7 +54,7 @@ class LinebotController < ApplicationController
                         end
                     end
                 end
-                client.reply_message(event["replyToken"], message1)
+                client.reply_message(event["replyToken"], message)
                 
            when Line::Bot::Event::MessageType::Location
                message = {
