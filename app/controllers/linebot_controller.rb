@@ -30,28 +30,28 @@ class LinebotController < ApplicationController
                str = event.message["text"]
                
                 #helpを表示させる
-                if str == "help"
+                case str
+                when "help"
                    message = {
                        type: "text",
                        text: "ヘルプを表示します"
                    }
-                end
-               
                #入力されたコードネームの構成音を探す
-               @data.each do |code|
-                    if code.name == str #入力されたコードネームと一致したら
-                        message = {
-                           type: "text",
-                           text: "#{first} #{third} #{fifth}"
-                       }
-                    else                #DB上になかったら
-                        message = {
-                           type: "text",
-                           text: "Not found"
-                       }
+                else
+                    @data.each do |code|
+                        if code.name == str #入力されたコードネームと一致したら
+                            message = {
+                            type: "text",
+                            text: "#{code.first} #{code.third} #{code.fifth}"
+                        }
+                        else                #DB上になかったら
+                            message = {
+                            type: "text",
+                            text: "Not found"
+                        }
+                        end
                     end
                 end
-              
                 client.reply_message(event["replyToken"], message)
            when Line::Bot::Event::MessageType::Location
                message = {
