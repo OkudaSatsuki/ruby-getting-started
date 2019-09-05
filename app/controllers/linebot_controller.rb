@@ -45,6 +45,7 @@ class LinebotController < ApplicationController
                             text: "#{code.first} #{code.third} #{code.fifth}"
                         }
                         break
+                        
                         else                #DB上になかったら
                             message = {
                             type: "text",
