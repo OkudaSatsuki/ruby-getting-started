@@ -22,15 +22,14 @@ class LinebotController < ApplicationController
        events = client.parse_events_from(body)
    
        events.each { |event|
-         case event
-         when Line::Bot::Event::Message
+        case event
+        when Line::Bot::Event::Message
            case event.type
            when Line::Bot::Event::MessageType::Text
                str = event.message["text"]
-               if (str == "help")
-                   message =
-                   {
-                       type: "text"
+               if str == "help"
+                   message = {
+                       type: "text",
                        text: "ヘルプを表示します"
                    }
                 else   
