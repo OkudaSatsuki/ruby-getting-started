@@ -46,8 +46,8 @@ class LinebotController < ApplicationController
                             #}
                             message1 = {
                                 type: "image",
-                                originalContentUrl: "https://www.dropbox.com/home?preview=C_V1.jpg",
-                                previewImageUrl: "https://www.dropbox.com/home?preview=C_V1.jpg"
+                                originalContentUrl: "https://gakufu.gakki.me/img/codep/C/C_V1.jpg",
+                                previewImageUrl: "https://gakufu.gakki.me/img/codep/C/C_V1.jpg"
                             }
                         break
                         
