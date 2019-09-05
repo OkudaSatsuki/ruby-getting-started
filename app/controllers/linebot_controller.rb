@@ -13,6 +13,7 @@ class LinebotController < ApplicationController
      
      def callback
        body = request.body.read
+       data = Datum.all #データベース内の全てのデータ
    
        signature = request.env["HTTP_X_LINE_SIGNATURE"]
        unless client.validate_signature(body, signature)
@@ -24,20 +25,33 @@ class LinebotController < ApplicationController
        events.each { |event|
         case event
         when Line::Bot::Event::Message
-           case event.type
-           when Line::Bot::Event::MessageType::Text
+            case event.type
+            when Line::Bot::Event::MessageType::Text
                str = event.message["text"]
-               if str == "help"
+               
+                #helpを表示させる
+                if str == "help"
                    message = {
                        type: "text",
                        text: "ヘルプを表示します"
                    }
-                else   
-                    message = {
-                        type: "text",
-                        text: "ありがとう！" #event.message["text"] + "!"
-                    }
                 end
+               
+               #入力されたコードネームの構成音を探す
+               @data.each do |code|
+                    if code.name == str #入力されたコードネームと一致したら
+                        message = {
+                           type: "text"
+                           text = "#{first} #{third} #{fifth}"
+                       }
+                    else                #DB上になかったら
+                        message = {
+                           type: "text"
+                           text = "Not found"
+                       }
+                    end
+                end
+              
                 client.reply_message(event["replyToken"], message)
            when Line::Bot::Event::MessageType::Location
                message = {
