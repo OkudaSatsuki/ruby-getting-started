@@ -26,18 +26,23 @@ class LinebotController < ApplicationController
          when Line::Bot::Event::Message
            case event.type
            when Line::Bot::Event::MessageType::Text
-            message = {
-                type: "text",
-                text: "ありがとう！" #event.message["text"] + "!"
-            }
-            client.reply_message(event["replyToken"], message)
+               message = {
+                   type: "text",
+                   text: "ありがとう！" #event.message["text"] + "!"
+                   }
+                client.reply_message(event["replyToken"], message)
+           when Line::Bot::Event::MessageType::Image
+               message = {
+                   type:"image"
+                   text: "いいね！"
+               }
            when Line::Bot::Event::MessageType::Location
-             message = {
-               type: "location",
-               title: "あなたはここにいますか？",
-               address: event.message["address"],
-               latitude: event.message["latitude"],
-               longitude: event.message["longitude"]
+               message = {
+                   type: "location",
+                   title: "あなたはここにいますか？",
+                   address: event.message["address"],
+                   latitude: event.message["latitude"],
+                   longitude: event.message["longitude"]
              }
              client.reply_message(event["replyToken"], message)
            end
