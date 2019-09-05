@@ -13,7 +13,7 @@ class LinebotController < ApplicationController
      
      def callback
        body = request.body.read
-       data = Datum.all #データベース内の全てのデータ
+       @data = Datum.all #データベース内の全てのデータ
    
        signature = request.env["HTTP_X_LINE_SIGNATURE"]
        unless client.validate_signature(body, signature)
@@ -38,19 +38,19 @@ class LinebotController < ApplicationController
                 end
                
                #入力されたコードネームの構成音を探す
-               #@data.each do |code|
-                #    if code.name == str #入力されたコードネームと一致したら
-                #        message = {
-                #           type: "text",
-                #           text: "#{first} #{third} #{fifth}"
-                #       }
-                #    else                #DB上になかったら
-                #        message = {
-                #           type: "text",
-                #           text: "Not found"
-                #       }
-                #    end
-                #end
+               @data.each do |code|
+                    if code.name == str #入力されたコードネームと一致したら
+                        message = {
+                           type: "text",
+                           text: "#{first} #{third} #{fifth}"
+                       }
+                    else                #DB上になかったら
+                        message = {
+                           type: "text",
+                           text: "Not found"
+                       }
+                    end
+                end
               
                 client.reply_message(event["replyToken"], message)
            when Line::Bot::Event::MessageType::Location
