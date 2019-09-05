@@ -42,12 +42,12 @@ class LinebotController < ApplicationController
                     if code.name == str #入力されたコードネームと一致したら
                         message = {
                            type: "text"
-                           text = "#{first} #{third} #{fifth}"
+                           text: "#{first} #{third} #{fifth}"
                        }
                     else                #DB上になかったら
                         message = {
                            type: "text"
-                           text = "Not found"
+                           text: "Not found"
                        }
                     end
                 end
