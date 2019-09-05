@@ -40,11 +40,11 @@ class LinebotController < ApplicationController
                 else
                     @data.each do |code|
                         if code.name == str #入力されたコードネームと一致したら
-                            message1 = {
+                            message2 = {
                                 type: "text",
                                 text: "#{code.first} #{code.third} #{code.fifth}"
                             }
-                            message2 = {
+                            message1 = {
                                 type: "image",
                                 originalContentUrl: "https://gakufu.gakki.me/img/codep/C/C_V1.jpg",
                                 previewImageUrl: "https://gakufu.gakki.me/img/codep/C/C_V1.jpg"
