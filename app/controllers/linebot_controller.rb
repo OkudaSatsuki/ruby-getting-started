@@ -41,9 +41,10 @@ class LinebotController < ApplicationController
                     @data.each do |code|
                         if code.name == str #入力されたコードネームと一致したら
                             message = {
-                                {type: "text",text: "#{code.first} #{code.third} #{code.fifth}"},
-                                {type: "image",originalContentUrl: "https://gakufu.gakki.me/img/codep/C/C_V1.jpg",previewImageUrl: "https://gakufu.gakki.me/img/codep/C/C_V1.jpg"}
-                            }                        break
+                                [type: "text",text: "#{code.first} #{code.third} #{code.fifth}"],
+                                [type: "image",originalContentUrl: "https://gakufu.gakki.me/img/codep/C/C_V1.jpg",previewImageUrl: "https://gakufu.gakki.me/img/codep/C/C_V1.jpg"]
+                            }
+                            break
                         
                         else                #DB上になかったら
                             message = {
