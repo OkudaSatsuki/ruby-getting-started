@@ -44,7 +44,7 @@ class LinebotController < ApplicationController
                             #    type: "text",
                             #    text: "#{code.first} #{code.third} #{code.fifth}"
                             #}
-                            message2 = {
+                            message1 = {
                                 type: "image",
                                 originalContentUrl: "https://www.dropbox.com/home?preview=C_V1.jpg",
                                 previewImageUrl: "https://www.dropbox.com/home?preview=C_V1.jpg"
@@ -59,8 +59,8 @@ class LinebotController < ApplicationController
                         end
                     end
                 end
-                #client.reply_message(event["replyToken"], message1)
-                client.reply_message(event["replyToken"], message2)
+                client.reply_message(event["replyToken"], message1)
+                #client.reply_message(event["replyToken"], message2)
            when Line::Bot::Event::MessageType::Location
                message = {
                    type: "location",
