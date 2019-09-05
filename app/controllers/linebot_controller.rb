@@ -29,13 +29,14 @@ class LinebotController < ApplicationController
                message = {
                    type: "text",
                    text: "ありがとう！" #event.message["text"] + "!"
-                   }
+                }
                 client.reply_message(event["replyToken"], message)
            when Line::Bot::Event::MessageType::Image
                message = {
                    type:"image"
                    text: "いいね！"
                }
+               client.reply_message(event["replyToken"], message)
            when Line::Bot::Event::MessageType::Location
                message = {
                    type: "location",
@@ -43,8 +44,8 @@ class LinebotController < ApplicationController
                    address: event.message["address"],
                    latitude: event.message["latitude"],
                    longitude: event.message["longitude"]
-             }
-             client.reply_message(event["replyToken"], message)
+               }
+               client.reply_message(event["replyToken"], message)
            end
          end
        }
