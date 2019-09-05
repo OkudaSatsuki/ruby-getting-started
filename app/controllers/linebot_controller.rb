@@ -39,7 +39,6 @@ class LinebotController < ApplicationController
                     }
                 end
                 client.reply_message(event["replyToken"], message)
-            end
            when Line::Bot::Event::MessageType::Location
                message = {
                    type: "location",
@@ -50,9 +49,9 @@ class LinebotController < ApplicationController
                }
                client.reply_message(event["replyToken"], message)
            end
-         end
+        end
        }
    
        head :ok
-     end
+    end
 end
