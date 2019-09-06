@@ -32,13 +32,10 @@ class LinebotController < ApplicationController
                 #helpを表示させる
                 case str
                 when "help"
-                   message = {
-                       type: "text",
-                       text: 
-                       "メジャーコード→「〇 major」
-                       マイナーコード→「〇 minor」
-                       と入力してね"
-                   }
+                   message = [
+                       {type: "text",text: "和音の名前(コードネーム)は主に五線譜の上部に記載されています。記載されている記号通りに入力してみてください(^^♪"},
+                       {type: "image",originalContentUrl: "https://pbs.twimg.com/media/EDwcieAU4AMnNrR?format=jpg&name=900x900" ,previewImageUrl: "https://pbs.twimg.com/media/EDwcieAU4AMnNrR?format=jpg&name=900x900"},
+                   ]
                #入力されたコードネームの構成音を探す
                 else
                     @data.each do |code|
