@@ -42,7 +42,7 @@ class LinebotController < ApplicationController
                         if code.name == str #入力されたコードネームと一致したら
                             message = [
                                 {type: "text",text: "#{code.first} #{code.third} #{code.fifth}"},
-                                {type: "image",originalContentUrl: "https://gakufu.gakki.me/img/codep/C/C_V1.jpg",previewImageUrl: "https://gakufu.gakki.me/img/codep/C/C_V1.jpg"},
+                                {type: "image",originalContentUrl: "#{code.url}",previewImageUrl: "#{code.url}"},
                             ]
                         break
                         
