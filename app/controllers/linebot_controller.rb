@@ -36,6 +36,13 @@ class LinebotController < ApplicationController
                        {type: "text",text: "和音の名前(コードネーム)は主に五線譜の上部に記載されています。記載されている記号通りに入力してみてください(^^♪"},
                        {type: "image",originalContentUrl: "https://pbs.twimg.com/media/EDwcieAU4AMnNrR?format=jpg&name=900x900" ,previewImageUrl: "https://pbs.twimg.com/media/EDwcieAU4AMnNrR?format=jpg&name=900x900"},
                    ]
+                when "和音の種類を教えて"
+                    message = [
+                        {type: "text",text:"[長三和音(メジャーコード)]：長音階の1度、3度、5度からなる三和音です。明るい印象を与える和音です。"},
+                        {type: "text",text:"[短三和音(マイナーコード)]：短音階の1度、3度、5度からなる三和音です。長三和音の3度が半音低くなっている和音とも言えます。暗い印象を和音です。"},
+                        {type: "text",text:"[増三和音(オーギュメントコード)]:長三和音の5度が半音高くなっている和音です。"},
+                        {type: "text",text:"[減三和音(ディミニッシュコード)]:短三和音の5度が半音低くなっている和音です。"},
+                    ]
                #入力されたコードネームの構成音を探す
                 else
                     @data.each do |code|
