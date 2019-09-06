@@ -24,12 +24,6 @@ class LinebotController < ApplicationController
    
        events.each { |event|
         case event
-        when Line::Bot::Event::Follow #ユーザーにフォローされたとき
-            message = {
-                type: "text",
-                text: "フォローありがとうございます！ 構成音を知りたい和音の名前を入力してね！
-                ヘルプを確認したいときは「help」と入力してね"
-            }
         when Line::Bot::Event::Message #ユーザーからメッセージが送られたとき
             case event.type
             when Line::Bot::Event::MessageType::Text
@@ -40,7 +34,10 @@ class LinebotController < ApplicationController
                 when "help"
                    message = {
                        type: "text",
-                       text: "ヘルプを表示します"
+                       text: 
+                       "メジャーコード→「〇 major」
+                       マイナーコード→「〇 minor」
+                       と入力してね"
                    }
                #入力されたコードネームの構成音を探す
                 else
