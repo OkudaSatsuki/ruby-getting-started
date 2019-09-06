@@ -24,7 +24,13 @@ class LinebotController < ApplicationController
    
        events.each { |event|
         case event
-        when Line::Bot::Event::Message
+        when Line::Bot::Event::Follow #ユーザーにフォローされたとき
+            message = {
+                type: "text",
+                text: "フォローありがとうございます！ 構成音を知りたい和音の名前を入力してね！
+                ヘルプを確認したいときは「help」と入力してね"
+            }
+        when Line::Bot::Event::Message #ユーザーからメッセージが送られたとき
             case event.type
             when Line::Bot::Event::MessageType::Text
                str = event.message["text"]
