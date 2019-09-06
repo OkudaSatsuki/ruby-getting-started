@@ -9,6 +9,7 @@
       <th>First</th>
       <th>Third</th>
       <th>Fifth</th>
+      <th>url</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,6 +21,7 @@
         <td><%= datum.first %></td>
         <td><%= datum.third %></td>
         <td><%= datum.fifth %></td>
+        <td><%= datum.url %></td>
         <td><%= link_to 'Show', datum %></td>
         <td><%= link_to 'Edit', edit_datum_path(datum) %></td>
         <td><%= link_to 'Destroy', datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
